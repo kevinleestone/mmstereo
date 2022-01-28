@@ -1,0 +1,49 @@
+data:
+  train:
+    datasets:
+      - path: datasets/sceneflow/flying_things/train
+        sim: true
+        no_split: true
+    transform:
+      random_crop: [ 896, 480 ]
+      random_horizontal_flip: true
+      random_color_jitter: true
+      keep_uncorrupted: true
+    shuffle: true
+    batch_size: 16
+    num_workers: 8
+  val:
+    datasets:
+      - path: datasets/sceneflow/flying_things/val
+        sim: true
+        no_split: true
+    batch_size: 1
+    num_workers: 4
+
+model:
+  model_file: models/hdrn_alpha_stereo.py
+  model_name: hdrn_alpha_stereo
+  num_disparities: 256
+  downsample_factor: 4
+  fe_internal_features: 16
+
+loss:
+  disparity_mult: 100.0
+  disparity_stdmean_scaled: true
+  nsce_mult: 0.2
+  smoothness_mult: 20.0
+
+optimizer:
+  optimizer: adam
+  learning_rate: 0.001
+
+  lr_policy: poly
+  poly_exp: 0.9
+
+epochs: 20
+output: output
+use_amp: true
+export_torchscript: true
+export_onnx: true
+random_camera_effect: true
+note: sceneflow

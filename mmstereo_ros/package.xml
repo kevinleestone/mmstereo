@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>mmstereo_ros</name>
+  <version>0.0.0</version>
+  <description>ROS wrapper for mmstereo</description>
+  
+  <maintainer email="matias@robots.ox.ac.uk">Matias Mattamala</maintainer>
+  <license>TBD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  
+  <depend>rospy</depend>
+  <depend>geometry_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>std_msgs</depend>
+  <depend>tf</depend>
+</package>
